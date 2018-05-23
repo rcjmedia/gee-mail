@@ -1,18 +1,70 @@
+<!doctype HTML>
 <html>
 	<head>
 		<script src="js/mail-generator.js"></script>
 		<link href="css/style.css" rel="stylesheet" media="screen">
     <script>
+	//Objective 3: When your page loads, via JavaScript access our prepopulated data stored in the window.geemails variable. Each object in the array has the following properties:
+			//date - The date message was sent
+			//subject - The subject of the message
+			//sender - The sender of the message
+			//body - The GeeMail message content	
       window.onload = function(){
         // ALL OF YOUR JAVASCRIPT CODE SHOULD GO HERE. 
         // We have to use window.onload so your JavaScript doesn't execute until the page has loaded and all HTML has been downloaded to your browser
+		console.log(geemails);
+					   
+        for(var i =0; i<geemails.length; i++){
+			console.log(geemails[i].date);
+            console.log(geemails[i].sender);
+            console.log(geemails[i].subject);
+            console.log(geemails[i].body); 
+						
+			// Use createElement() method  (https://www.w3schools.com/jsref/met_document_createelement.asp)	to auto create div tags for data from mail.generator.js. To get data from mail.generator.js, use innerHTML() method.
+
+			var dateDiv = document.createElement("div");
+            dateDiv.className = "date";
+            dateDiv.innerHTML = "Received: " + geemails[i].date;
+			main.appendChild(dateDiv);
+					
+            var sendDiv = document.createElement("div");
+            sendDiv.className = "send";
+            sendDiv.innerHTML = "From: " + geemails[i].sender;
+			dateDiv.appendChild(sendDiv);
+			
+			var userDiv = document.createElement("div");			
+			userDiv.className = "send";
+            userDiv.innerHTML = "To: Me";
+			sendDiv.appendChild(userDiv);
+			
+            var subjectDiv = document.createElement("div");
+            subjectDiv.className = "subject";
+            subjectDiv.innerHTML = "Subject: " + geemails[i].subject;
+			sendDiv.appendChild(subjectDiv);
+			
+           	var bodyDiv = document.createElement("div");
+            bodyDiv.className = "body";
+            bodyDiv.innerHTML = geemails[i].body;
+			sendDiv.appendChild(bodyDiv);
+			
+        }
+				   
+		//Objective 6: Set a recurring function to via the JavaScript setInterval function that will call our existing getNewMessage function that we have created for you that will return a newly created message with the same properties as your previous messages.  
         
+		  
+		//Per Vic: And before you move on to #6, see if you can get the first 10 messages of the geemails to render into the browser. 
+       console.log(getNewMessage());
+            
+        //Per Vic: Once you get that done, you'll need to add some functionality to make the messages show and hide after clicking on it..  	    
+			
       };
     </script>
 	</head>
+	
 	<body>
+		<header align="center"><h1>GeeMail</h1></header>
 		<div class="container" id="main">
-			Build Me!
+			<h6 align="right">Build Me!</h6>
 		</div>
 	</body>
 </html>

@@ -1,0 +1,41 @@
+/* CSS Document */
+/* Objective 7: All CSS styles should be created in the css\style.css file included in the project. */
+body{
+background-color: #c4c4c4;
+}
+
+.container > div{
+background: #eee;
+padding: 1em;
+border:2px solid black;
+}
+
+.container > div:nth-child(odd){
+background: #ddd;
+}
+
+#main{
+display: grid;
+grid-row-gap: 1em;
+}
+
+.date{
+padding:2px;
+display:grid;
+}
+
+
+.send{
+padding:2px;
+display:grid;
+}
+
+.subject{
+padding:2px;
+display:grid;
+}
+
+.body{
+padding:3px;
+display:grid;
+}
