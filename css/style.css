@@ -5,6 +5,9 @@ background-color: #c4c4c4;
 }
 
 .container > div{
+display: grid;
+font-family: "Arial";
+font-size: 13px;
 background: #eee;
 padding: 1em;
 border: 2px solid black;
@@ -37,5 +40,6 @@ display: grid;
 
 .body{
 padding: 1px;
+padding-top: 1em;
 display: grid;
 }
