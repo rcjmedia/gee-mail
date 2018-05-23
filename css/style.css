@@ -7,7 +7,7 @@ background-color: #c4c4c4;
 .container > div{
 background: #eee;
 padding: 1em;
-border:2px solid black;
+border: 2px solid black;
 }
 
 .container > div:nth-child(odd){
@@ -20,22 +20,22 @@ grid-row-gap: 1em;
 }
 
 .date{
-padding:2px;
-display:grid;
+padding: 1px;
+display: grid;
 }
 
 
 .send{
-padding:2px;
-display:grid;
+padding: 1px;
+display: grid;
 }
 
 .subject{
-padding:2px;
-display:grid;
+padding: 1px;
+display: grid;
 }
 
 .body{
-padding:3px;
-display:grid;
+padding: 1px;
+display: grid;
 }
