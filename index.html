@@ -33,24 +33,29 @@
            	var bodyDiv = document.createElement("div");
             bodyDiv.className = "body";
             bodyDiv.innerHTML = geemails[i].body;
-			bodyDiv.style.display = "none";
+			bodyDiv.style.display = "none"; //Element will not be displayed by default
 			dateDiv.appendChild(bodyDiv);
 
         }
 		  
 		  	//Per Vic: Once you get that done, you'll need to add some functionality to make the messages show and hide after clicking on it..
+		  
+		  	//This makes divs with date class clickable
 		var eventElem1 = document.getElementsByClassName("date");
         for(var i = 0; i<eventElem1.length; i++){
-            eventElem1[i].addEventListener("click", showBody);
+            eventElem1[i].addEventListener("click", showBody);//Will need to do showBody function.
         }
         function showBody(){ 
            
            var eventBody = this.querySelectorAll(".body")[0];
             
-            if(eventBody.style.display === "none"){
-                eventBody.style.display = "block";
-            }else{
-                eventBody.style.display = "none";
+            if(eventBody.style.display === "none")//hidden by default
+			{
+                eventBody.style.display = "block";//Element is rendered as a block-level element
+            }
+			else
+			{
+                eventBody.style.display = "none"; //Element will not be displayed
             }
         }
 		
