@@ -4,13 +4,32 @@ body{
 background-color: #c4c4c4;
 }
 
-.container > div{
+.row{
 display: grid;
+grid-template-columns: 10% 90%;
+}
+
+.nav{
+font-family: "Arial";
+font-size: 13px;
+
+}
+
+#menu{
+display: grid;
+font-family: "Arial";
+font-size: 13px;
+background: gray;
+padding: 1em;
+border: 1px solid black;	
+}
+
+.container > div{
 font-family: "Arial";
 font-size: 13px;
 background: #eee;
 padding: 1em;
-border: 2px solid black;
+border: 1px solid black;
 }
 
 .container > div:nth-child(odd){
@@ -19,27 +38,14 @@ background: #ddd;
 
 #main{
 display: grid;
-grid-row-gap: 1em;
+
 }
 
-.date{
+.date, .send, .subject{
 padding: 1px;
-display: grid;
-}
-
-
-.send{
-padding: 1px;
-display: grid;
-}
-
-.subject{
-padding: 1px;
-display: grid;
 }
 
 .body{
 padding: 1px;
 padding-top: 1em;
-display: grid;
 }
