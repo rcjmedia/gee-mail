@@ -23,57 +23,60 @@
 			
 			// Use createElement() method  (https://www.w3schools.com/jsref/met_document_createelement.asp)	to auto create div tags for data from mail.generator.js. To get data from mail.generator.js, use innerHTML() method.
 			
+			//Per Vic: And before you move on to #6, see if you can get the first 10 messages of the geemails to render into the browser. 
+			
 			var dateDiv = document.createElement("div");
             dateDiv.className = "date";
-            dateDiv.innerHTML = "Received: " + geemails[i].date;
+            dateDiv.innerHTML = geemails[i].subject + " | " + "From: " + geemails[i].sender + " | " + geemails[i].date;
 			main.appendChild(dateDiv);
-							
-            var subjectDiv = document.createElement("div");
-            subjectDiv.className = "subject";
-            subjectDiv.innerHTML = "Subject: " + geemails[i].subject;
-			dateDiv.appendChild(subjectDiv);
-			
-            var sendDiv = document.createElement("div");
-            sendDiv.className = "send";
-            sendDiv.innerHTML = "From: " + geemails[i].sender;
-			dateDiv.appendChild(sendDiv);
-			
-			var userDiv = document.createElement("div");			
-			userDiv.className = "send";
-            userDiv.innerHTML = "To: Me";
-			dateDiv.appendChild(userDiv);
 			
            	var bodyDiv = document.createElement("div");
             bodyDiv.className = "body";
             bodyDiv.innerHTML = geemails[i].body;
-			//divBody.style.display = "none";
+			bodyDiv.style.display = "none";
 			dateDiv.appendChild(bodyDiv);
 
         }
-	  
 		  
-		//Objective 6: Set a recurring function to via the JavaScript setInterval function that will call our existing getNewMessage function that we have created for you that will return a newly created message with the same properties as your previous messages.  
-        
-		  
-		//Per Vic: And before you move on to #6, see if you can get the first 10 messages of the geemails to render into the browser. 
-       console.log(getNewMessage());
+		  	//Per Vic: Once you get that done, you'll need to add some functionality to make the messages show and hide after clicking on it..
+		var eventElem1 = document.getElementsByClassName("date");
+        for(var i = 0; i<eventElem1.length; i++){
+            eventElem1[i].addEventListener("click", showBody);
+        }
+        function showBody(){ 
+           
+           var eventBody = this.querySelectorAll(".body")[0];
             
-        //Per Vic: Once you get that done, you'll need to add some functionality to make the messages show and hide after clicking on it..  	    
+            if(eventBody.style.display === "none"){
+                eventBody.style.display = "block";
+            }else{
+                eventBody.style.display = "none";
+            }
+        }
+		
+		
+		//Objective 6: Set a recurring function to via the JavaScript setInterval function that will call our existing getNewMessage function that we have created for you that will return a newly created message with the same properties as your previous messages.    
+		
+       console.log(getNewMessage());	    
 
       };
     </script>
 	</head>
 	
 	<body>
-		<header align="center"><h1 align="left">GeeMail</h1><h3 align="right">Welcome User</h3></header>
+		<header align="center">
+			<h3 align="right" >Welcome User</h3>
+			<h1 align="left">GeeMail</h1>
+		</header>
 				<div class="row">
 					<div class="nav" id="menu">
 						<nav>
-							<a href="#">Compose</a><br />
-							<a href="#">Inbox</a><br />
-							<a href="#">Sent Mail</a><br />
-							<a href="#">Spam</a><br />
-							<a href="#">Trash</a><br />
+							<a href="#">Compose</a><br /><br />
+							<a href="#">Inbox</a><br /><br />
+							<a href="#">Sent Mail</a><br /><br />
+							<a href="#">Spam</a><br /><br />
+							<a href="#">Trash</a><br /><br />
+							<br />
 							<hr />
 						</nav>
 					</div>

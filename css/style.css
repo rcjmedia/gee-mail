@@ -12,7 +12,8 @@ grid-template-columns: 10% 90%;
 .nav{
 font-family: "Arial";
 font-size: 13px;
-
+padding: 1em;
+padding-bottom: 2em;
 }
 
 #menu{
@@ -38,7 +39,6 @@ background: #ddd;
 
 #main{
 display: grid;
-
 }
 
 .date, .send, .subject{
