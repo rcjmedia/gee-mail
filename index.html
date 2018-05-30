@@ -13,12 +13,17 @@
         // ALL OF YOUR JAVASCRIPT CODE SHOULD GO HERE. 
         // We have to use window.onload so your JavaScript doesn't execute until the page has loaded and all HTML has been downloaded to your browser
 		console.log(geemails);
-   		
+		
+   		var email = 0; //Count starts at 0.
+		
         for(var i = 0; i<geemails.length; i++){
 			console.log(geemails[i].date);
             console.log(geemails[i].sender);
             console.log(geemails[i].subject);
             console.log(geemails[i].body); 
+			email++; // Adds all of the prepopulated data stored in the window.geemails variable. There should be 10 messages.
+			var myInbox = document.querySelectorAll("[href='#']")[1];
+			myInbox.innerHTML = "Inbox (" + email + ")";//Displays amount of messages with "(10)" when the page loads.
 			
 			// Use createElement() method  (https://www.w3schools.com/jsref/met_document_createelement.asp)	to auto create div tags for data from mail.generator.js. To get data from mail.generator.js, use innerHTML() method.
 			
@@ -34,7 +39,7 @@
             bodyDiv.innerHTML = geemails[i].body;
 			bodyDiv.style.display = "none"; //Element will not be displayed by default
 			dateDiv.appendChild(bodyDiv);
-			
+            
         }
 		  
 		  	//Per Vic: Once you get that done, you'll need to add some functionality to make the messages show and hide after clicking on it..
@@ -46,25 +51,30 @@
         }
         function displayBody1(){ 
            
-           var eventBody1 = this.querySelectorAll(".body1")[0];
+           var eventBody1 = this.querySelectorAll(".body1")[0];//Selects the css class .body1.
             
-            if(eventBody1.style.display === "none")//hidden by default
+            if(eventBody1.style.display === "block")//hidden by default
 			{
-                eventBody1.style.display = "block";//Element is rendered as a block-level element
+                eventBody1.style.display = "none";//Element is rendered as a block-level element
             }
 			else
 			{
-                eventBody1.style.display = "none"; //Element will not be displayed
+                eventBody1.style.display = "block"; //Element will not be displayed
             }
         }
-
+		var emails = 0;//New generated emails count starts at 0.
+					
         var timer = setInterval(newMessage,1000);//This makes the SetInterval take the "newMessage" function and repeats it. 1000 is 1 second.
 		
 		//Create "newMessage" function.
         function newMessage(){
             console.log(getNewMessage());
             var genMsg = getNewMessage();
-
+			
+			emails++;
+			var m = email + emails;//First messages (var email) displayed "(10)" when the page loaded and adds the amount of new messages (var emails) that's been generated.
+			myInbox.innerHTML = "Inbox (" + m + ")";//Displays the total amount of messages that's been generated every second.
+			
 			//Copied and paste the same codes that were used to display the first initial messages. Then created and used the "genMsg" variable instead of "geemails[i]"
             var dateDiv2 = document.createElement("div");
             dateDiv2.className = "date2";
@@ -84,7 +94,7 @@
         }
         function displayBody2(){ 
            
-           var eventBody2 = this.querySelectorAll(".body2")[0];
+           var eventBody2 = this.querySelectorAll(".body2")[0];//Selects the css class .body2.
             
             if(eventBody2.style.display === "none")//hidden by default
 			{
@@ -108,25 +118,19 @@
 			<h1 align="left">GeeMail</h1>
 		</header>
 				<div class="row">
-					<div class="nav" id="menu">
-						<nav>
+					<div class="nav">
 							<a href="#">Compose</a><br /><br />
 							<a href="#">Inbox</a><br /><br />
-							<a href="#">Sent Mail</a><br /><br />
+							<a href="#">Sent</a><br /><br />
 							<a href="#">Spam</a><br /><br />
 							<a href="#">Trash</a><br /><br />
 							<br />
 							<hr />
-						</nav>
 					</div>
 					<div>
 						<div class="container" id="main">
-
 						</div>					
 					</div>
 				</div>
-		<footer>
-		
-		</footer>
 	</body>
 </html>

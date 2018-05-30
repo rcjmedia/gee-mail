@@ -13,16 +13,10 @@ grid-template-columns: 10% 90%;
 font-family: "Arial";
 font-size: 13px;
 font-weight: bold;
-padding: 1em;
-padding-bottom: 2em;
-}
-
-#menu{
-font-family: "Arial";
-font-size: 13px;
 background: gray;
 padding: 1em;
-border: 1px solid black;	
+padding-bottom: 2em;
+border: 1px solid black;
 }
 
 .container > div{
