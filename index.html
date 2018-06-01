@@ -4,110 +4,72 @@
 		<script src="js/mail-generator.js"></script>
 		<link href="css/style.css" rel="stylesheet" media="screen">
     <script>
-	//Objective 3: When your page loads, via JavaScript access our prepopulated data stored in the window.geemails variable. Each object in the array has the following properties:
-			//date - The date message was sent
-			//subject - The subject of the message
-			//sender - The sender of the message
-			//body - The GeeMail message content	
       window.onload = function(){
-        // ALL OF YOUR JAVASCRIPT CODE SHOULD GO HERE. 
-        // We have to use window.onload so your JavaScript doesn't execute until the page has loaded and all HTML has been downloaded to your browser
-		console.log(geemails);
-		
-   		var email = 0; //Count starts at 0.
-		
+		  	console.log(geemails);
+   		var email = 0;
         for(var i = 0; i<geemails.length; i++){
-			console.log(geemails[i].date);
-            console.log(geemails[i].sender);
-            console.log(geemails[i].subject);
-            console.log(geemails[i].body); 
-			email++; // Adds all of the prepopulated data stored in the window.geemails variable. There should be 10 messages.
+			console.log(geemails[i].date, geemails[i].sender, geemails[i].subject, geemails[i].body);
+			email++;
+			
 			var myInbox = document.querySelectorAll("[href='#']")[1];
-			myInbox.innerHTML = "Inbox (" + email + ")";//Displays amount of messages with "(10)" when the page loads.
-			
-			// Use createElement() method  (https://www.w3schools.com/jsref/met_document_createelement.asp)	to auto create div tags for data from mail.generator.js. To get data from mail.generator.js, use innerHTML() method.
-			
-			//Per Vic: And before you move on to #6, see if you can get the first 10 messages of the geemails to render into the browser. 
-			
+			myInbox.innerHTML = "Inbox (" + email + ")";		
 			var dateDiv = document.createElement("div");
             dateDiv.className = "date1";
             dateDiv.innerHTML = geemails[i].subject + " | " + "From: " + geemails[i].sender + " | " + geemails[i].date;
-			main.appendChild(dateDiv);
-			
+			dateDiv.addEventListener("click", displayBody1);
+			messages.appendChild(dateDiv);			
            	var bodyDiv = document.createElement("div");
             bodyDiv.className = "body1";
             bodyDiv.innerHTML = geemails[i].body;
-			bodyDiv.style.display = "none"; //Element will not be displayed by default
+			bodyDiv.style.display = "none";
 			dateDiv.appendChild(bodyDiv);
-            
+						
+		function displayBody1(){      
+           var eventBody1 = this.querySelectorAll(".body1")[0];         
+            if(eventBody1.style.display === "block")
+				{
+					eventBody1.style.display = "none";
+				}
+				else
+				{
+					eventBody1.style.display = "block"; 
+				}
+        	}
         }
-		  
-		  	//Per Vic: Once you get that done, you'll need to add some functionality to make the messages show and hide after clicking on it..
-		  
-		  	//This makes divs with date class clickable
-		var eventElem1 = document.getElementsByClassName("date1");
-        for(var i = 0; i<eventElem1.length; i++){
-            eventElem1[i].addEventListener("click", displayBody1);//Will need to do displayBody1 function.
-        }
-        function displayBody1(){ 
-           
-           var eventBody1 = this.querySelectorAll(".body1")[0];//Selects the css class .body1.
-            
-            if(eventBody1.style.display === "block")//hidden by default
-			{
-                eventBody1.style.display = "none";//Element is rendered as a block-level element
-            }
-			else
-			{
-                eventBody1.style.display = "block"; //Element will not be displayed
-            }
-        }
-		var emails = 0;//New generated emails count starts at 0.
-					
-        var timer = setInterval(newMessage,1000);//This makes the SetInterval take the "newMessage" function and repeats it. 1000 is 1 second.
-		
-		//Create "newMessage" function.
+
+		var emails = 0;				
+        var timer = setInterval(newMessage,1600);
         function newMessage(){
             console.log(getNewMessage());
-            var genMsg = getNewMessage();
-			
+            var genMsg = getNewMessage();		
 			emails++;
-			var m = email + emails;//First messages (var email) displayed "(10)" when the page loaded and adds the amount of new messages (var emails) that's been generated.
-			myInbox.innerHTML = "Inbox (" + m + ")";//Displays the total amount of messages that's been generated every second.
 			
-			//Copied and paste the same codes that were used to display the first initial messages. Then created and used the "genMsg" variable instead of "geemails[i]"
+			var m = email + emails;
+			myInbox.innerHTML = "Inbox (" + m + ")";
+			
             var dateDiv2 = document.createElement("div");
             dateDiv2.className = "date2";
-            dateDiv2.innerHTML = genMsg.subject + " | " + "From: " + genMsg.sender + " | " + genMsg.date;
-			main.appendChild(dateDiv2);
-			
+            dateDiv2.innerHTML = genMsg.subject + " | " + "From: " + genMsg.sender + " | " + genMsg.date; 
+			dateDiv2.addEventListener("click", displayBody2);
+			main.prepend(dateDiv2)			
            	var bodyDiv2 = document.createElement("div");
             bodyDiv2.className = "body2";
             bodyDiv2.innerHTML = genMsg.body;
-			bodyDiv2.style.display = "none"; //Element will not be displayed by default
+			bodyDiv2.style.display = "none";
 			dateDiv2.appendChild(bodyDiv2);
-            
-            //Copy show/hide effect that were used to display the first initial messages.
-        var eventElem2 = document.getElementsByClassName("date2");
-        for(var i = 0; i<eventElem2.length; i++){
-            eventElem2[i].addEventListener("click", displayBody2);//Will need to do displayBody2 function.
-        }
-        function displayBody2(){ 
-           
-           var eventBody2 = this.querySelectorAll(".body2")[0];//Selects the css class .body2.
-            
-            if(eventBody2.style.display === "none")//hidden by default
-			{
-                eventBody2.style.display = "block";//Element is rendered as a block-level element
-            }
-			else
-			{
-                eventBody2.style.display = "none"; //Element will not be displayed
-            }
-        }
-            
-        }	    
 
+        function displayBody2(){         
+           var eventBody2 = this.querySelectorAll(".body2")[0];       
+            if(eventBody2.style.display === "block")
+				{
+					eventBody2.style.display = "none";
+				}
+				else
+				{
+					eventBody2.style.display = "block";
+				}
+        	}	          
+        }	    
       };
     </script>
 	</head>
@@ -128,8 +90,8 @@
 							<hr />
 					</div>
 					<div>
-						<div class="container" id="main">
-						</div>					
+						<div class="container" id="main"></div>
+						<div class="first" id="messages"></div>
 					</div>
 				</div>
 	</body>

@@ -19,7 +19,23 @@ padding-bottom: 2em;
 border: 1px solid black;
 }
 
+.top > div{
+font-family: "Arial";
+font-size: 13px;
+background: #eee;
+padding: 1em;
+border: 1px solid black;
+}
+
 .container > div{
+font-family: "Arial";
+font-size: 13px;
+background: #eee;
+padding: 1em;
+border: 1px solid black;
+}
+
+.first > div{
 font-family: "Arial";
 font-size: 13px;
 background: #eee;
@@ -40,3 +56,4 @@ padding-left: 5em;
 padding: 1px;
 padding-top: 1em;
 }
+
