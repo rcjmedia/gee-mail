@@ -1,98 +1,98 @@
 <!doctype HTML>
 <html>
-	<head>
-		<script src="js/mail-generator.js"></script>
-		<link href="css/style.css" rel="stylesheet" media="screen">
-    <script>
-      window.onload = function(){
-		  	console.log(geemails);
-   		var email = 0;
-        for(var i = 0; i<geemails.length; i++){
-			console.log(geemails[i].date, geemails[i].sender, geemails[i].subject, geemails[i].body);
-			email++;
-			
-			var myInbox = document.querySelectorAll("[href='#']")[1];
-			myInbox.innerHTML = "Inbox (" + email + ")";		
-			var dateDiv = document.createElement("div");
-            dateDiv.className = "date1";
-            dateDiv.innerHTML = geemails[i].subject + " | " + "From: " + geemails[i].sender + " | " + geemails[i].date;
-			dateDiv.addEventListener("click", displayBody1);
-			messages.appendChild(dateDiv);			
-           	var bodyDiv = document.createElement("div");
-            bodyDiv.className = "body1";
-            bodyDiv.innerHTML = geemails[i].body;
-			bodyDiv.style.display = "none";
-			dateDiv.appendChild(bodyDiv);
-						
-		function displayBody1(){      
-           var eventBody1 = this.querySelectorAll(".body1")[0];         
-            if(eventBody1.style.display === "block")
-				{
-					eventBody1.style.display = "none";
-				}
-				else
-				{
-					eventBody1.style.display = "block"; 
-				}
-        	}
-        }
+<head>
+	<script src="js/mail-generator.js"></script>
+	<link href="css/style.css" rel="stylesheet" media="screen">
+<script>
+	window.onload = function(){
+		console.log(geemails);
+	var email = 0;
+	for(var i = 0; i<geemails.length; i++){
+		console.log(geemails[i].date, geemails[i].sender, geemails[i].subject, geemails[i].body);
+		email++;
+		
+		var myInbox = document.querySelectorAll("[href='#']")[1];
+		myInbox.innerHTML = "Inbox (" + email + ")";		
+		var dateDiv = document.createElement("div");
+		dateDiv.className = "date1";
+		dateDiv.innerHTML = geemails[i].subject + " | " + "From: " + geemails[i].sender + " | " + geemails[i].date;
+		dateDiv.addEventListener("click", displayBody1);
+		messages.appendChild(dateDiv);			
+		var bodyDiv = document.createElement("div");
+		bodyDiv.className = "body1";
+		bodyDiv.innerHTML = geemails[i].body;
+		bodyDiv.style.display = "none";
+		dateDiv.appendChild(bodyDiv);
+					
+	function displayBody1(){      
+		var eventBody1 = this.querySelectorAll(".body1")[0];         
+		if(eventBody1.style.display === "block")
+			{
+				eventBody1.style.display = "none";
+			}
+			else
+			{
+				eventBody1.style.display = "block"; 
+			}
+		}
+	}
 
-		var emails = 0;				
-        var timer = setInterval(newMessage,3000);
-        function newMessage(){
-            console.log(getNewMessage());
-            var genMsg = getNewMessage();		
-			emails++;
-			
-			var m = email + emails;
-			myInbox.innerHTML = "Inbox (" + m + ")";
-			
-            var dateDiv2 = document.createElement("div");
-            dateDiv2.className = "date2";
-            dateDiv2.innerHTML = genMsg.subject + " | " + "From: " + genMsg.sender + " | " + genMsg.date; 
-			dateDiv2.addEventListener("click", displayBody2);
-			main.prepend(dateDiv2)			
-           	var bodyDiv2 = document.createElement("div");
-            bodyDiv2.className = "body2";
-            bodyDiv2.innerHTML = genMsg.body;
-			bodyDiv2.style.display = "none";
-			dateDiv2.appendChild(bodyDiv2);
+	var emails = 0;				
+	var timer = setInterval(newMessage,3000);
+	function newMessage(){
+		console.log(getNewMessage());
+		var genMsg = getNewMessage();		
+		emails++;
+		
+		var m = email + emails;
+		myInbox.innerHTML = "Inbox (" + m + ")";
+		
+		var dateDiv2 = document.createElement("div");
+		dateDiv2.className = "date2";
+		dateDiv2.innerHTML = genMsg.subject + " | " + "From: " + genMsg.sender + " | " + genMsg.date; 
+		dateDiv2.addEventListener("click", displayBody2);
+		main.prepend(dateDiv2)			
+		var bodyDiv2 = document.createElement("div");
+		bodyDiv2.className = "body2";
+		bodyDiv2.innerHTML = genMsg.body;
+		bodyDiv2.style.display = "none";
+		dateDiv2.appendChild(bodyDiv2);
 
-        function displayBody2(){         
-           var eventBody2 = this.querySelectorAll(".body2")[0];       
-            if(eventBody2.style.display === "block")
-				{
-					eventBody2.style.display = "none";
-				}
-				else
-				{
-					eventBody2.style.display = "block";
-				}
-        	}	          
-        }	    
-      };
-    </script>
-	</head>
+	function displayBody2(){         
+		var eventBody2 = this.querySelectorAll(".body2")[0];       
+		if(eventBody2.style.display === "block")
+			{
+				eventBody2.style.display = "none";
+			}
+			else
+			{
+				eventBody2.style.display = "block";
+			}
+		}	          
+	}	    
+	};
+</script>
+</head>
 	
-	<body>
-	<header align="center">
-		<h3 align="right" >Welcome User</h3>
-		<h1 align="left">GeeMail</h1>
-	</header>
-		<div class="row">
-			<div class="nav">
-					<a href="#">Compose</a><br /><br />
-					<a href="#">Inbox</a><br /><br />
-					<a href="#">Sent</a><br /><br />
-					<a href="#">Spam</a><br /><br />
-					<a href="#">Trash</a><br /><br />
-					<br />
-					<hr />
-			</div>
-			<div>
-				<div class="container" id="main"></div>
-				<div class="first" id="messages"></div>
-			</div>
+<body>
+<header align="center">
+	<h3 align="right" >Welcome User</h3>
+	<h1 align="left">GeeMail</h1>
+</header>
+	<div class="row">
+		<div class="nav">
+				<a href="#">Compose</a><br /><br />
+				<a href="#">Inbox</a><br /><br />
+				<a href="#">Sent</a><br /><br />
+				<a href="#">Spam</a><br /><br />
+				<a href="#">Trash</a><br /><br />
+				<br />
+				<hr />
 		</div>
-	</body>
+		<div>
+			<div class="container" id="main"></div>
+			<div class="first" id="messages"></div>
+		</div>
+	</div>
+</body>
 </html>
